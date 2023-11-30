@@ -1,0 +1,52 @@
+<div class="container-table">
+    <div class="title">
+        <h2 style="padding-bottom: 8px;">Usuarios Inactivos</h2>
+    </div>
+
+    <div class="btn-group mb-3">
+        <a routerLink="/usuarios" class="btn btn-sm btn-outline-primary" aria-current="page">Activos</a>
+        <a routerLink="/usuarios-inactivos" class="btn btn-sm btn-primary active">Inactivos</a>
+    </div>
+
+    <div class="form col-sm-3 mb-4">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-input" [(ngModel)]="searchTerm" placeholder="Buscar...">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Documento</th>
+                <th>Dni / Cne</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Turno</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of usuario | filterBySearchTerm: searchTerm">
+                <td>{{ item.typeDocument }}</td>
+                <td>{{ item.numberDocument }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.rol === 'A' ? 'Administrador' : 'Docente'}}</td>
+                <td>
+                    <span class="d-flex justify-content-center"
+                        [ngClass]="{'badge badge-success': item.states === 'A', 'badge badge-danger': item.states === 'I'}">
+                        {{ item.states === 'A' ? 'Activo' : 'Inactivo' }}
+                    </span>
+                </td>
+                <td>
+                    <button (click)=" activarUsuario(item.id)" class="btn-acciones-activar">Activar</button>
+                    <button (click)="eliminarUsuarioPermanente(item.id)" class="btn-acciones-delete">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

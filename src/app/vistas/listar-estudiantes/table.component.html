@@ -1,0 +1,46 @@
+<div class="container-table">
+    <div class="title">
+        <h2 style="padding-bottom: 8px;">Estudiantes</h2>
+        <div class="btns">
+            <button class="btn-acciones">Exportar</button>
+            <button routerLink="/agregar-estudiante" class="btn-add">Agregar</button>
+            <button routerLink="/inactivos" class="btn btn-add">Inactivos</button>
+        </div>
+    </div>
+
+    <div class="container-controls-pagination">
+        <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de Documento</th>
+                <th>Dni / Cne</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Turno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of estudiantes | paginate: { itemsPerPage: 5, currentPage: page }">
+                <td>{{ item.typeDocument }}</td>
+                <td>{{ item.numberDocument }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.shift === 'T' ? 'Tarde' : 'Mañana'}}</td>
+                <td>
+                    <button (click)="verDetallesEstudiante(item.id)" class="btn-acciones">Detalles</button>
+                    <button (click)="actualizarEstudiante(item.id)" class="btn-acciones">Editar</button>
+                    <button (click)="eliminarEstudiante(item.id)" class="btn-acciones-delete">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

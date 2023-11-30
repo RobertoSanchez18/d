@@ -1,0 +1,19 @@
+.container-formulario {
+    margin-left: 200px;
+    padding: 32px;
+}
+
+.title {
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}

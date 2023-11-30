@@ -1,0 +1,55 @@
+<div class="container-usuarios">
+    <div class="title">
+        <h2 style="padding-bottom: 8px;">Usuarios </h2>
+        <div class="d-flex justify-content-end">
+            <button routerLink="/agregar-usuario" class="btn-add">Agregar</button>
+        </div>
+    </div>
+
+    <div class="btn-group mb-3">
+        <a routerLink="/usuarios" class="btn btn-sm btn-primary active" aria-current="page">Activos</a>
+        <a routerLink="/usuarios-inactivos" class="btn btn-sm btn-outline-primary">Inactivos</a>
+    </div>
+
+    <div class="form col-sm-3 mb-4">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-input" [(ngModel)]="searchTerm" placeholder="Buscar...">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <!-- <th>Tipo de Documento</th> -->
+                <th>Dni / Cne</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let item of usuario | paginate: { itemsPerPage: 5, currentPage: page} | filterBySearchTerm: searchTerm">
+                <!-- <td>{{ item.typeDocument }}</td> -->
+                <td>{{ item.numberDocument }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.address}}</td>
+                <td>{{ item.rol === 'A' ? 'Administrador 👑' : 'Docente'}}</td>
+                <td>
+                    <button (click)="actualizarUsuario(item.id)" class="btn-acciones">Editar</button>
+                    <button (click)="eliminarUsuario(item.id)" class="btn-acciones-delete">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+            <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior"
+                nextLabel="Siguiente" screenReaderPageLabel="page"></pagination-controls>
+        </div>
+    </div>
+</div>

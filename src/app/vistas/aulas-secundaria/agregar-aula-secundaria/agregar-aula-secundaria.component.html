@@ -1,0 +1,40 @@
+<div class="container-formulario">
+    <div class="title">
+        <h1>Agregar Aula</h1>
+    </div>
+    <div class="row d-flex justify-content-center mt-5 p-5">
+        <div class="col-4">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="grado">Grado:</label>
+                    <select class="form-select" id="grado" [(ngModel)]="aula.grado" name="grado">
+                        <option value="1">1ro</option>
+                        <option value="2">2do</option>
+                        <option value="3">3ro</option>
+                        <option value="4">4to</option>
+                        <option value="5">5to</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="seccion">Sección:</label>
+                    <select class="form-select" id="seccion" [(ngModel)]="aula.seccion" name="seccion">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="turno">Tutor: </label>
+                    <select class="form-select" id="users_id" [(ngModel)]="aula.user" name="users_id">
+                        <option *ngFor="let item of usuario" [ngValue]="item">{{ item.name }}</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary mt-4">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>

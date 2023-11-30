@@ -1,0 +1,36 @@
+.container-formulario {
+    margin-left: 200px;
+    padding: 32px;
+
+}
+
+.title {
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Estilo para el focus del Input */
+input:focus {
+    outline: none;
+    border-radius: 4px;
+    border: 2.5px solid rgb(0, 110, 255);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+select:focus {
+    outline: none;
+    border-radius: 4px;
+    border: 2.5px solid rgb(0, 110, 255);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+

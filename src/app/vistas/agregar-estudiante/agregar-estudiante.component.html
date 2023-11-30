@@ -1,0 +1,143 @@
+<div class="container-formulario">
+    <div class="title">
+        <h1>Nuevo Estudiante</h1>
+    </div>
+
+    <div class="container mt-5 pt-5">
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="row justify-content-center">
+                <!-- Input Nombre-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input class="form-control" type="text" id="nombre" [(ngModel)]="estudiante.name" name="nombre"
+                            required pattern="[a-zA-Z ]*" (ngModelChange)="onNameChange()">
+                        <div *ngIf="nameError" class="alert alert-danger mt-1">
+                            Solo se permiten letras en el nombre.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Apellido-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input class="form-control" type="text" id="apellido" [(ngModel)]="estudiante.surname"
+                            name="surname" pattern="[a-zA-Z ]*" (ngModelChange)="onSurnameChange()">
+                        <div *ngIf="surnameError" class="alert alert-danger mt-1">
+                            Solo se permiten letras en el apellido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <!-- Input Tipo de Documento-->
+                    <div class="form-group">
+                        <label for="tipoDocumento">Tipo Documento:</label>
+                        <select class="form-select" id="tipoDocumento" [(ngModel)]="estudiante.typeDocument"
+                            name="typeDocument" (ngModelChange)="onTypeDocumentChange()">
+                            <option selected disabled>Selecciona una opción</option>
+                            <option value="DNI">DNI</option>
+                            <option value="CNE">CNE</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="col-3">
+                    <!-- Input Numero de Documento-->
+                    <div class="form-group">
+                        <label for="numeroDocumento">Numero de Documento:</label>
+                        <input class="form-control" type="text" id="numeroDocumento"
+                            [(ngModel)]="estudiante.numberDocument" name="numeroDocumento"
+                            [pattern]="getDocumentPattern()" required (input)="clearDocumentError()">
+                        <div *ngIf="documentError" class="alert alert-danger mt-1">
+                            {{ documentErrorMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center">
+                <!-- Input Email-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input class="form-control" type="text" id="email" [(ngModel)]="estudiante.email" name="email"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" (ngModelChange)="onEmailChange()">
+                        <div *ngIf="emailError" class="alert alert-danger mt-1">
+                            Ingresa una dirección de correo electrónico válida.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Direccion-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="direccion">Direccion:</label>
+                        <input class="form-control" type="text" id="direccion" [(ngModel)]="estudiante.addres"
+                            name="email">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-center">
+                <!-- Input Celular-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="celular">Celular:</label>
+                        <input class="form-control" type="text" id="celular" [(ngModel)]="estudiante.celphone"
+                            name="celular" pattern="^\d{9}$" (ngModelChange)="onCelphoneChange()">
+                        <div *ngIf="celphoneError" class="alert alert-danger mt-1">
+                            Asegurese que el numero de celular empiece por 9 y tenga 9 digitos numericos
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Turno-->
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="turno">Turno:</label>
+                        <select class="form-select" id="turno" [(ngModel)]="estudiante.shift" name="turno">
+                            <option selected disabled>Selecciona una opción</option>
+                            <option value="T">Tarde</option>
+                            <option value="M">Mañana</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-center">
+                <!-- Input Fecha de Nacimiento-->
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                        <input class="form-control" type="date" id="fechaNacimiento"
+                            [(ngModel)]="estudiante.dateOfBirth" name="fechaNacimiento">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- En tu formulario Angular -->
+            <input class="form-control" type="hidden" name="states" value="A" [(ngModel)]="estudiante.states">
+
+            <div class="row justify-content-end mt-5">
+                <div class="col-4">
+                    <button class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

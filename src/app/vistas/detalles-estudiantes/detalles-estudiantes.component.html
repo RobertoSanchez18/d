@@ -1,0 +1,64 @@
+<div class="container-detalles">
+    <h2 class="mb-4">Detalles</h2>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Nombre:</strong></div>
+        <div class="col-md-9">{{ estudiante.name }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Apellidos:</strong></div>
+        <div class="col-md-9">{{ estudiante.surname }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Celular:</strong></div>
+        <div class="col-md-9">{{ estudiante.celphone || 'Celular no proporcionado' }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Email:</strong></div>
+        <div class="col-md-9">{{ estudiante.email || 'Correo no proporcionado'}}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Dirección:</strong></div>
+        <div class="col-md-9">{{ estudiante.addres }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Tipo de Documento:</strong></div>
+        <div class="col-md-9">{{ estudiante.typeDocument }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Número de Documento:</strong></div>
+        <div class="col-md-9">{{ estudiante.numberDocument }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Turno:</strong></div>
+        <div class="col-md-9">{{ estudiante.shift === 'T' ? 'Tarde' : 'Mañana' }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Fecha de Nacimiento:</strong></div>
+        <div class="col-md-9">{{ estudiante.dateOfBirth | date : "dd/MM/yyyy" }}</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3"><strong>Aula:</strong></div>
+        <div class="col-md-9">{{ estudiante.classroomId }}</div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3"><strong>Estado:</strong></div>
+        <div class="col-md-9">
+            <span
+                [ngClass]="{'badge bg-success': estudiante.states === 'A', 'badge bg-danger': estudiante.states === 'I'}">
+                {{ estudiante.states === 'A' ? 'Activo' : 'Inactivo'}}
+            </span>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    padding: 10px 16px;
+    font-family: 'SF Pro Text', sans-serif;
+    border-right: 1px solid rgb(211, 211, 211);
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px 16px;
+}
+
+.logo img {
+    width: 25px;
+}
+
+.logo span {
+    font-weight: 600;
+    font-size: 16px;
+    padding-left: 12px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 4px;
+}
+
+li i {
+    width: 20px;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+a {
+        padding-left: 16px;
+        font-size: 14px;
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+}
+
+li:hover {
+    background-color: #0A84FF;
+}
+
+li:hover a,
+li:hover i {
+    color: white;
+}
+
+li:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.sub-menu li {
+    padding-left: 32px;
+}

@@ -18,8 +18,17 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
+    "ng2-pagination": "^2.0.2",
+    "ngx-pagination": "^6.0.3",
+    "pdfmake": "^0.2.8",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.9.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

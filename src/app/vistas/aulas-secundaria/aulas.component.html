@@ -1,0 +1,42 @@
+<div class="container-aulas">
+    <div class="row">
+        <div class="col d-flex justify-content-between">
+            <h2>Aulas/Secundaria</h2>
+            <button routerLink="/aulas/secundaria/agregar" class="btn-add">
+                Agregar
+            </button>
+        </div>
+
+        <div class="container d-flex flex-wrap">
+            <div *ngFor="let item of data" class="card">
+                <div class="card-content">
+                    <h2 class="card-title">Aulas</h2>
+                    <p class="card-text">Grado: {{ item.grado }}°</p>
+                    <p class="card-text">Sección: {{ item.seccion }}</p>
+                    <p class="card-text" *ngIf="item?.user">
+                        Tutor: {{ item.user?.name }} {{ item.user?.surname}}
+                    </p>
+                    <p class="card-text" *ngIf="!item?.user">
+                        Tutor: No tiene tutor asignado
+                    </p>
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <button (click)="eliminarAula(item.id)" class="btn-delete">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button (click)="editAula(item.id)" class="btn-ver">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button (click)="traerEstudiantes(item.id)" class="btn-ver">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>

@@ -1,0 +1,95 @@
+<div class="container-form-actualizar">
+    <div class="title">
+        <h1>Actualizar</h1>
+    </div>
+
+    <div class="col-sm-4">
+        <form (ngSubmit)="onSubmit()">
+
+            <!-- Input Nombre-->
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input class="form-control" type="text" id="nombre" [(ngModel)]="estudiante.name" name="nombre" required
+                    pattern="[a-zA-Z ]*" (ngModelChange)="onNameChange()">
+                <div *ngIf="nameError" class="alert alert-danger mt-1">
+                    Solo se permiten letras en el nombre.
+                </div>
+            </div>
+
+            <!-- Input Apellido-->
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input class="form-control" type="text" id="apellido" [(ngModel)]="estudiante.surname" name="surname"
+                    pattern="[a-zA-Z ]*" (ngModelChange)="onSurnameChange()">
+                <div *ngIf="surnameError" class="alert alert-danger mt-1">
+                    Solo se permiten letras en el apellido.
+                </div>
+            </div>
+
+            <!-- Input Tipo de Documento-->
+            <div class="form-group">
+                <label for="tipoDocumento">Tipo Documento:</label>
+                <select class="form-select" id="tipoDocumento" [(ngModel)]="estudiante.typeDocument" name="typeDocument"
+                    (ngModelChange)="onTypeDocumentChange()">
+                    <option value="DNI">DNI</option>
+                    <option value="CNE">CNE</option>
+                </select>
+            </div>
+
+            <!-- Input Numero de Documento-->
+            <div class="form-group">
+                <label for="numeroDocumento">Numero de Documento:</label>
+                <input class="form-control" type="text" id="numeroDocumento" [(ngModel)]="estudiante.numberDocument"
+                    name="numeroDocumento" [pattern]="getDocumentPattern()" required (input)="clearDocumentError()">
+                <div *ngIf="documentError" class="alert alert-danger mt-1">
+                    {{ documentErrorMessage }}
+                </div>
+            </div>
+
+            <!-- Input Email-->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input class="form-control" type="text" id="email" [(ngModel)]="estudiante.email" name="email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" (ngModelChange)="onEmailChange()">
+                <div *ngIf="emailError" class="alert alert-danger mt-1">
+                    Ingresa una dirección de correo electrónico válida.
+                </div>
+            </div>
+
+            <!-- Input Direccion-->
+            <div class="form-group">
+                <label for="direccion">Direccion:</label>
+                <input class="form-control" type="text" id="direccion" [(ngModel)]="estudiante.addres" name="addres">
+            </div>
+
+            <!-- Input Celular-->
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input class="form-control" type="text" id="celular" [(ngModel)]="estudiante.celphone" name="celular"
+                    pattern="^\d{9}$" (ngModelChange)="onCelphoneChange()">
+                <div *ngIf="celphoneError" class="alert alert-danger mt-1">
+                    Asegurese que el numero de celular empiece por 9 y tenga 9 digitos numericos
+                </div>
+            </div>
+
+            <!-- Input Turno-->
+            <div class="form-group">
+                <label for="turno">Turno:</label>
+                <select class="form-select" id="turno" [(ngModel)]="estudiante.shift" name="turno">
+                    <option value="T">Tarde</option>
+                    <option value="M">Mañana</option>
+                </select>
+            </div>
+
+            <!-- Input Fecha de Nacimiento-->
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input class="form-control" type="date" id="fechaNacimiento" [(ngModel)]="estudiante.dateOfBirth"
+                    name="fechaNacimiento">
+            </div>
+
+            <button class="btn btn-primary mt-4">Guardar</button>
+        </form>
+    </div>
+
+</div>

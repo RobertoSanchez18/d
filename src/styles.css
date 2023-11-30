@@ -1,1 +1,139 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 12px;
+}
+
+.btn-add {
+    background-color: #0d6efd;
+    padding: 6px 10px;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: #025ec0;
+}
+
+.btn-acciones {
+    background-color: #ffffff;
+    padding: 6px;
+    font-weight: 400;
+    color: #0068DA;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-acciones:hover {
+    background-color: #0068DA;
+    color: #fff;
+}
+
+
+.btn-acciones-delete {
+    background-color: #ffffff;
+    padding: 6px;
+    font-weight: 400;
+    color: #c91735;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-acciones-delete:hover {
+    background-color: #A40E26;
+    color: #fff;
+}
+
+.btn-acciones-activar {
+    background-color: #ffffff;
+    padding: 6px;
+    font-weight: 400;
+    color: #00aa1c;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-acciones-activar:hover {
+    background-color: #00aa1c;
+    color: #fff;
+}
+
+
+.btn-delete {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    font-weight: 400;
+    color: #c91735;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-delete:hover {
+    background-color: #A40E26;
+    color: #fff;
+}
+
+.btn-ver {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 8px;
+    font-weight: 400;
+    color: #0d6efd;
+    border-radius: 8px;
+    border: 1px solid #CCCCCC;
+    margin: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-ver:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/*Estilos para los estados*/
+.badge-success {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background-color: #c3f5c7;
+    color: #0e7201;
+}
+
+.badge-danger {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #fde1e1;
+    color: #d31427;
+}
+
+.alert-message {
+    color: #d31427;
+}
+

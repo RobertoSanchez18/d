@@ -1,0 +1,44 @@
+<div class="sidebar">
+    <div class="logo">
+        <img src="../../assets/img/Logo.svg" alt="Logo de la aplicación">
+        <span>ClassKeeper</span>
+    </div>
+    <ul>
+        <li>
+            <i class="fas fa-tachometer-alt"></i>
+            <a routerLink="panel-de-control">
+                Panel de Control
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-chalkboard"></i>
+            <a (mouseenter)="toggleAulasSubMenu()">
+                Aulas
+            </a>
+        </li>
+        <ul *ngIf="showAulasSubMenu" class="sub-menu">
+            <li><i class="fas fa-caret-right"></i><a routerLink="aulas/secundaria"> Secundaria</a></li>
+            <li><i class="fas fa-caret-right"></i><a routerLink="aulas/primaria"> Primaria</a></li>
+        </ul>
+        <li>
+            <i class="fas fa-chart-bar"></i>
+            <a routerLink="reportes">
+                Reportes
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-users"></i>
+            <a routerLink="usuarios">
+                Usuarios
+            </a>
+        </li>
+        <li>
+            <i class="fas fa-user-slash"></i>
+            <a routerLink="inactivos" class="link">
+                Inactivos
+            </a>
+        </li>
+    </ul>
+</div>
+
+<router-outlet></router-outlet>
