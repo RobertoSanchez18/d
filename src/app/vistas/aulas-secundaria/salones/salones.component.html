@@ -11,8 +11,8 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item" (click)="exportToExcel()" type="button">Excel</button>
-                    <button class="dropdown-item" type="button">Pdf</button>
-                    <button class="dropdown-item" type="button">Csv</button>
+                    <button class="dropdown-item" (click)="exportToJasperReport()" type="button">Pdf</button>
+                    <button class="dropdown-item" (click)="exportToCsv()" type="button">Csv</button>
                 </div>
             </div>
             <button routerLink="/agregar-estudiante/{{ aula.id }}" class="btn btn-sm btn-primary">Agregar</button>

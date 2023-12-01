@@ -5,7 +5,9 @@ import { Aula } from 'src/app/interfaces/aula';
 import { Estudiante } from 'src/app/interfaces/estudiante';
 import { AulaService } from 'src/app/services/aula.service';
 import { EstudianteService } from 'src/app/services/estudiante.service';
+import * as FileSaver from 'file-saver';
 import Swal from 'sweetalert2';
+import { JasperReportService } from 'src/app/services/jasper-report.service';
 
 
 
@@ -68,7 +70,7 @@ export class SalonesComponent implements OnInit {
     });
   }
 
-  constructor(private aulaService: AulaService, private router: Router, private route: ActivatedRoute,private estudianteService: EstudianteService, private cdRef: ChangeDetectorRef){}
+  constructor(private aulaService: AulaService, private router: Router, private route: ActivatedRoute,private estudianteService: EstudianteService, private cdRef: ChangeDetectorRef, private jasperReportService: JasperReportService){}
 
   ngOnInit(): void { 
     this.id = this.route.snapshot.params['id'];
@@ -151,6 +153,31 @@ export class SalonesComponent implements OnInit {
     XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
 
     XLSX.writeFile(book, this.name);
+  }
+
+  exportToCsv(): void {
+    const dataToExport = this.estudiante; // Puedes cambiar esto según tu estructura de datos
+    const csvContent = "data:text/csv;charset=utf-8," +
+      "Tipo de documento,Dni / Cne,Nombres,Apellidos,Email,Acciones\n" +
+      dataToExport.map(item => Object.values(item).join(",")).join("\n");
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    FileSaver.saveAs(blob, 'estudiantes.csv');
+  }
+
+  exportToJasperReport(): void {
+    const dataToExport = this.estudiante; // Asegúrate de tener los datos a exportar
+    this.jasperReportService.generateReport(dataToExport).subscribe(
+      (report: any) => {
+        // Puedes manejar el informe generado aquí, por ejemplo, descargar el archivo
+        const blob = new Blob([report], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      },
+      (error) => {
+        console.error('Error al generar el informe', error);
+      }
+    );
   }
 
 }
