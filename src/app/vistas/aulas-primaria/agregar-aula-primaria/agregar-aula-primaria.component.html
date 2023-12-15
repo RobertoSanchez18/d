@@ -28,7 +28,8 @@
                 <div class="form-group">
                     <label for="turno">Tutor:</label>
                     <select class="form-select" id="users_id" name="users_id" [(ngModel)]="aula.user">
-                        <option *ngFor="let item of usuario" [ngValue]="item">{{ item.name }}</option>
+                        <option *ngFor="let item of usuario" [ngValue]="item">{{ item.name }} {{ item.surname }}
+                        </option>
                     </select>
                 </div>
 

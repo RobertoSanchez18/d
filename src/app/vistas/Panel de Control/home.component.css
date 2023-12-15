@@ -3,3 +3,44 @@
     margin-left: 200px;
     padding: 32px;
 }
+
+.container_main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 16px;
+}
+
+.container-widgets {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 3/4;
+    border-left: 1px solid rgb(211, 211, 211);
+}
+
+.teacher-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.teacher-card .header-teacher-card {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.teacher-card .container-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.teacher-img {
+    max-width: 50px;
+    border-radius: 50%;
+}

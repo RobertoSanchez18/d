@@ -1,47 +1,93 @@
 <div class="container-table">
-    <div class="row">
-        <div class="col-10">
-            <h2>Estudiantes Inactivos</h2>
+    <div class="title">
+        <h2 class="pb-2">Estudiantes Inactivos</h2>
+        <div class="d-flex justify-content-end">
+            <div class="dropdown me-4">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Exportar
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button (click)="exportToExcel()" class="dropdown-item" type="button">Excel</button>
+                    <button (click)="exportToPdf()" class="dropdown-item" type="button">Pdf</button>
+                    <button (click)="exportToCsv()" class="dropdown-item" type="button">Csv</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="btn-group mb-3">
-        <a routerLink="/inactivos" class="btn btn-sm btn-primary active">Inactivos</a>
+        <a class="btn btn-sm btn-primary active">Inactivos</a>
     </div>
 
-    <div class="form col-sm-3 mb-4">
-        <i class="fa fa-search"></i>
-        <input type="text" class="form-control form-input" [(ngModel)]="searchTerm" placeholder="Buscar...">
+
+    <div class="row mb-3 mt-3">
+        <div class="row">
+            <!-- Input de Buscar -->
+            <div class="form col-sm-3">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control form-input" [(ngModel)]="searchTerm2" placeholder="Buscar...">
+            </div>
+
+            <div class="col">
+                <div class="filtro d-flex">
+                    <button class="btn btn-sm btn-outline-primary" (click)="showFilterOptions = !showFilterOptions">
+                        <i class="fa-solid fa-filter"></i> Filtrar
+                    </button>
+
+                    <!-- Mostrar checkboxes si showFilterOptions es true -->
+                    <div *ngIf="showFilterOptions" class="filter-options">
+                        <div class="d-flex flex-row mt-1">
+                            <div *ngFor="let option of filterOptions" class="form-check ms-3 me-1 ">
+                                <input class="form-check-input" type="checkbox" id="{{ option.value }}"
+                                    [(ngModel)]="option.checked" (change)="updateFilters()">
+                                <label class="form-check-label" for="{{ option.value }}">{{ option.label }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles para la paginacion -->
+            <div class="col d-flex justify-content-end">
+                <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior"
+                    nextLabel="Siguiente" screenReaderPageLabel="page"></pagination-controls>
+            </div>
+
+        </div>
+
     </div>
 
-    <table>
+
+
+    <table id="season-tble">
         <thead>
             <tr>
                 <th>Dni / Cne</th>
+                <th>Numero Doc</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
-                <th>Email</th>
                 <th>Aula</th>
                 <th>Nivel</th>
-                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of estudiante | shearchFilterStudents : searchTerm">
+            <tr
+                *ngFor="let item of getFilteredData() | shearchFilterStudents : searchTerm2 | paginate: { itemsPerPage: 7, currentPage: page}">
+                <td>{{ item.typeDocument }}</td>
                 <td>{{ item.numberDocument }}</td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.surname }}</td>
-                <td>{{ item.email }}</td>
                 <td>{{ getNombreAulaPorId(item.classroomId).nombreAula}}</td>
                 <td>{{ getNombreAulaPorId(item.classroomId).turno }}</td>
                 <!-- <td>{{ item.shift === 'T' ? 'Tarde' : 'Mañana'}}</td> -->
-                <td>
+                <!-- <td>
                     <span class="d-flex justify-content-center"
                         [ngClass]="{'badge badge-success': item.states === 'A', 'badge badge-danger': item.states === 'I'}">
                         {{ item.states === 'A' ? 'Activo' : 'Inactivo' }}
                     </span>
-                </td>
+                </td> -->
                 <td>
                     <button (click)="activarStudent(item.id)" class="btn-acciones-activar">Activar</button>
                     <!-- <button (click)="eliminarEstudiantePermanente(item.id)"

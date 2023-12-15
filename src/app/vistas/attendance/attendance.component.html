@@ -1,0 +1,54 @@
+<div class="container-asistencia">
+
+    <div class="d-flex justify-content-between">
+        <h2 class="mb-5">Registro de Asistencia</h2>
+        <div class="dropdown me-4">
+            <a routerLink="/ver-asistencias" class="btn btn-sm btn-outline-primary">Ver Asistencias</a>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-2">
+            <label>Grado y Sección:</label>
+            <select class="form-select" [(ngModel)]="aulaSeleccionada" (change)="onAulaChange()">
+                <option *ngFor="let item of aulas" [value]="item.id">{{item.grado}} "{{item.seccion}}"</option>
+            </select>
+        </div>
+
+        <div class="col-2">
+            <label>Docente:</label>
+            <select class="form-select">
+                <option *ngFor="let item of usuarios" [value]="item.id">{{item.name}} {{item.surname}}</option>
+            </select>
+        </div>
+
+        <div class="col-2 d-flex align-items-center fecha">
+            <p>Fecha: {{ obtenerFechaActual() | date:'dd/MM/yyyy' }}</p>
+        </div>
+
+
+
+    </div>
+
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Asistencia</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students; let i = index">
+                <td>{{ student.name }}</td>
+                <td>{{ student.surname }}</td>
+                <td>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="asistenciasMarcadas[i]"> Marcar
+                    Asistencia
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!-- Botón para insertar todas las asistencias -->
+    <button class="btn btn-sm btn-primary" (click)="insertarAsistencia()">Guardar Asistencia</button>
+</div>

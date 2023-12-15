@@ -12,7 +12,7 @@
         </li>
         <li>
             <i class="fas fa-chalkboard"></i>
-            <a (mouseenter)="toggleAulasSubMenu()">
+            <a (click)="toggleAulasSubMenu()">
                 Aulas
             </a>
         </li>
@@ -33,12 +33,34 @@
             </a>
         </li>
         <li>
-            <i class="fas fa-user-slash"></i>
-            <a routerLink="inactivos" class="link">
-                Inactivos
+            <i class="fa-solid fa-box-archive"></i>
+            <a (click)="toggleArchivosSubMenu()">
+                Archivados
+            </a>
+        </li>
+        <ul *ngIf="showArchivosSubMenu" class="sub-menu">
+            <li><i class="fas fa-user-slash"></i><a routerLink="archivados/estudiantes-inactivos"> Estudiantes
+                    Inactivos</a></li>
+        </ul>
+
+        <li>
+            <i class="fas fa-life-ring"></i>
+            <a routerLink="asistencia">
+                Asistencia
             </a>
         </li>
     </ul>
+
+    <div class="cerrar-sesion">
+        <ul>
+            <li>
+                <i class="fas fa-sign-out-alt"></i>
+                <a>Cerrar Sesión</a>
+            </li>
+        </ul>
+    </div>
 </div>
+
+
 
 <router-outlet></router-outlet>

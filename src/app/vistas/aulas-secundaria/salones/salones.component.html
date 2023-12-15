@@ -11,7 +11,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item" (click)="exportToExcel()" type="button">Excel</button>
-                    <button class="dropdown-item" (click)="exportToJasperReport()" type="button">Pdf</button>
+                    <button class="dropdown-item" (click)="exportToPdf()"  type="button">Pdf</button>
                     <button class="dropdown-item" (click)="exportToCsv()" type="button">Csv</button>
                 </div>
             </div>
@@ -58,7 +58,6 @@
         </div>
     </div>
 
-    <!-- <button (click)="exportToExcel()">Export to Excel</button> -->
 
     <table id="season-tble" *ngIf="estudiante && estudiante.length > 0">
         <thead>

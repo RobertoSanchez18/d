@@ -7,7 +7,8 @@ import { AulaService } from 'src/app/services/aula.service';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import * as FileSaver from 'file-saver';
 import Swal from 'sweetalert2';
-import { JasperReportService } from 'src/app/services/jasper-report.service';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 
@@ -70,7 +71,7 @@ export class SalonesComponent implements OnInit {
     });
   }
 
-  constructor(private aulaService: AulaService, private router: Router, private route: ActivatedRoute,private estudianteService: EstudianteService, private cdRef: ChangeDetectorRef, private jasperReportService: JasperReportService){}
+  constructor(private aulaService: AulaService, private router: Router, private route: ActivatedRoute,private estudianteService: EstudianteService, private cdRef: ChangeDetectorRef){}
 
   ngOnInit(): void { 
     this.id = this.route.snapshot.params['id'];
@@ -155,6 +156,20 @@ export class SalonesComponent implements OnInit {
     XLSX.writeFile(book, this.name);
   }
 
+  exportToPdf() {
+    const element = document.getElementById('season-tble'); // Reemplaza 'tuTablaId' con el ID de tu tabla
+    if (element) {
+      html2canvas(element).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('reporte.pdf');
+      });
+    }
+  }
+
   exportToCsv(): void {
     const dataToExport = this.estudiante; // Puedes cambiar esto según tu estructura de datos
     const csvContent = "data:text/csv;charset=utf-8," +
@@ -163,21 +178,6 @@ export class SalonesComponent implements OnInit {
 
     const blob = new Blob([csvContent], { type: 'text/csv' });
     FileSaver.saveAs(blob, 'estudiantes.csv');
-  }
-
-  exportToJasperReport(): void {
-    const dataToExport = this.estudiante; // Asegúrate de tener los datos a exportar
-    this.jasperReportService.generateReport(dataToExport).subscribe(
-      (report: any) => {
-        // Puedes manejar el informe generado aquí, por ejemplo, descargar el archivo
-        const blob = new Blob([report], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      },
-      (error) => {
-        console.error('Error al generar el informe', error);
-      }
-    );
   }
 
 }

@@ -1,0 +1,25 @@
+<div class="container-view-docentes">
+    <h2>Docentes</h2>
+
+
+    <table id="season-tble">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Celular</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of docentes">
+                <td>{{ item.name }}</td>
+                <td>{{ item.surname }}</td>
+                <td>{{ item.email || 'Correo no proporcionado' }}</td>
+                <td>{{ item.celphone }}</td>
+                <td>{{ item.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

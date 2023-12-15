@@ -8,9 +8,13 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
 
   showAulasSubMenu = false;
+  showArchivosSubMenu = false;
 
   toggleAulasSubMenu() {
     this.showAulasSubMenu = !this.showAulasSubMenu;
   }
 
+  toggleArchivosSubMenu() {
+    this.showArchivosSubMenu = !this.showArchivosSubMenu;
+  }
 }

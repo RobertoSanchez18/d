@@ -18,6 +18,9 @@ import { AgregarAulaSecundariaComponent } from './vistas/aulas-secundaria/agrega
 import { AgregarAulaPrimariaComponent } from './vistas/aulas-primaria/agregar-aula-primaria/agregar-aula-primaria.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ActualizarAulaComponent } from './vistas/aulas-secundaria/actualizar-aula/actualizar-aula.component';
+import { AttendanceComponent } from './vistas/attendance/attendance.component';
+import { ViewAsistenciasComponent } from './vistas/view-asistencias/view-asistencias.component';
+import { ViewDocentesComponent } from './vistas/view-docentes/view-docentes.component';
 
 const routes: Routes = [
     {path: '', component: SidebarComponent},
@@ -29,7 +32,7 @@ const routes: Routes = [
     {path: 'aulas/secundaria/agregar', component: AgregarAulaSecundariaComponent},
     {path: 'aulas/secundaria/actualizar/:id', component: ActualizarAulaComponent},
     {path: 'aulas/primaria', component: AulasPrimariaComponent},
-    {path: 'inactivos', component: ListarInactivosComponent},
+    {path: 'archivados/estudiantes-inactivos', component: ListarInactivosComponent},
     {path: 'agregar-estudiante/:id', component: AgregarEstudianteComponent},
     {path: 'actualizar-estudiante/:id',component: ActualizarEstudianteComponent},
     {path: 'detalles-estudiante/:id', component: DetallesEstudiantesComponent},
@@ -38,12 +41,17 @@ const routes: Routes = [
     {path: 'usuarios-inactivos',component: ListarUsuariosInactivosComponent},
     {path: 'aulas/primaria/agregar', component: AgregarAulaPrimariaComponent},
     {path: 'aulas/secund', component: TableComponent},
+    {path: 'asistencia', component: AttendanceComponent},
+    {path: 'ver-asistencias', component: ViewAsistenciasComponent},
+    {path: 'ver-docentes', component: ViewDocentesComponent},
     {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
+   declarations: [
+  ],
 })
 
 export class AppRoutingModule {}

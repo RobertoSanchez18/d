@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-agregar-usuario',
   templateUrl: './agregar-usuario.component.html',

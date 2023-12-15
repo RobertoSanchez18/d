@@ -1,0 +1,54 @@
+<div class="container-view-asistencia">
+
+    <div class="d-flex justify-content-between">
+        <h3 class="mb-5">Asistencias</h3>
+        <div class="dropdown me-4">
+            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Exportar
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" (click)="exportToExcel()" type="button">Excel</button>
+                <button class="dropdown-item" (click)="exportToPdf()" type="button">Pdf</button>
+                <button class="dropdown-item" (click)="exportToCsv()" type="button">Csv</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-2">
+            <label> Fecha: </label>
+            <input class="form-control" type="date" [(ngModel)]="fechaFiltro" />
+        </div>
+
+        <div class="col d-flex justify-content-end pt-4">
+            <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="Anterior"
+                nextLabel="Siguiente" screenReaderPageLabel="page"></pagination-controls>
+        </div>
+    </div>
+
+    <table id="season-tble">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let item of listaAsistencia  | FiltroPorFecha: fechaFiltro | paginate: { itemsPerPage: 9, currentPage: page}">
+                <td>{{ item.student.name }}</td>
+                <td>{{ item.student.surname }}</td>
+                <td>
+                    <div [ngClass]="item.states === 'P' ? 'presente' : 'ausente'">
+                        <span>{{ item.states === 'P' ? 'Presente' : 'Ausente' }}</span>
+                    </div>
+                </td>
+                <td>{{ item.dates | date:'dd/MM/yyyy' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

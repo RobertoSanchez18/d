@@ -1,4 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-danger: #d31427;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -130,10 +133,9 @@
     padding: 4px 8px;
     border-radius: 12px;
     background-color: #fde1e1;
-    color: #d31427;
+    color: var(--color-danger);
 }
 
 .alert-message {
-    color: #d31427;
+    color: var(--color-danger);
 }
-

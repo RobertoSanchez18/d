@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars'
+import { FiltroPorFechaPipe } from './FiltroPorFecha.pipe';
+
 
 
 import { AppComponent } from './app.component';
@@ -29,6 +32,10 @@ import { AgregarAulaPrimariaComponent } from './vistas/aulas-primaria/agregar-au
 import { ShearchFilterStudentsPipe } from './shearch-filter-students.pipe';
 import { LoginComponent } from './auth/login/login.component';
 import { ActualizarAulaComponent } from './vistas/aulas-secundaria/actualizar-aula/actualizar-aula.component';
+import { AttendanceComponent } from './vistas/attendance/attendance.component';
+import { ViewAsistenciasComponent } from './vistas/view-asistencias/view-asistencias.component';
+import { ViewDocentesComponent } from './vistas/view-docentes/view-docentes.component';
+
 
 
 
@@ -56,14 +63,19 @@ import { ActualizarAulaComponent } from './vistas/aulas-secundaria/actualizar-au
     AgregarAulaPrimariaComponent,
     ShearchFilterStudentsPipe,
     LoginComponent,
-    ActualizarAulaComponent
+    ActualizarAulaComponent,
+    AttendanceComponent,
+    ViewAsistenciasComponent,
+    FiltroPorFechaPipe,
+    ViewDocentesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
