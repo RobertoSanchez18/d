@@ -1,4 +1,12 @@
-<div class="container-salones">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-salones">
     <div *ngIf="aula && estudiante" class="title">
         <h2 style="padding-bottom: 8px;">Aula/{{aula.turno === 'S' ? 'Secundaria' : 'Primaria'}}: {{ aula.grado}} -
             {{
@@ -105,3 +113,6 @@
         No hay estudiantes en este aula.
     </div>
 </div>
+</body>
+</html>
+
